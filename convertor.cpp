@@ -5,7 +5,7 @@ string convertor::convert(number n)
     return fromDec(toDec(n.val, n.iss), n.oss);
 }
 
-string convertor::itos(int number) {
+string convertor::itos(unsigned long long number) {
     string res;
     stringstream stream;
     stream << number;
@@ -13,8 +13,8 @@ string convertor::itos(int number) {
     return res;
 }
 
-int convertor::stoi(string line) {
-    int res;
+unsigned long long convertor::stoi(string line) {
+    unsigned long long res;
     stringstream stream(line);
     stream >> res;
     if(line != "0" && res == 0) throw invalid_argument("stoi: argument have to be a number");
@@ -51,8 +51,8 @@ void convertor::reverse(string& line, int length) {
 
 string convertor::toDec(string val, int ss) {
     if(ss < 2 || ss > 36) throw invalid_argument("toDec: notation have to be in [2; 36]");
-    int dec = 0;
-    for(int i = 0; i < val.length(); i++) {
+    unsigned long long dec = 0;
+    for(size_t i = 0; i < val.length(); i++) {
         int index = val.length() - 1 - i;
         int rank = ltoi(val[index]);
         if(rank >= ss) throw invalid_argument("toDec: argument in wrong notation");
@@ -63,7 +63,7 @@ string convertor::toDec(string val, int ss) {
 
 string convertor::fromDec(string val, int ss) {
     if(ss < 2 || ss > 36) throw invalid_argument("fromDec: notation have to be in [2; 36]");
-    int num = stoi(val);
+    unsigned long long num = stoi(val);
     string res = "";
     while(num) {
         res += itol(num % ss);

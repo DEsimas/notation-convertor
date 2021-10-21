@@ -23,6 +23,8 @@ private slots:
 
     void on_oss_textChanged(const QString &arg1);
 
+    void on_copyBtn_clicked();
+
 private:
     Ui::MainWindow *ui;
     convertor conv;

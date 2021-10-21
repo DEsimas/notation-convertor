@@ -8,8 +8,8 @@ class convertor
 public:
     string convert(number n);
 private:
-    string itos(int number);
-    int stoi(string line);
+    string itos(unsigned long long number);
+    unsigned long long stoi(string line);
     int ctoi(char ch);
     string itol(int number);
     int ltoi(char number);

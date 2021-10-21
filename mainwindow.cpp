@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include <QClipboard>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -20,6 +21,7 @@ number MainWindow::getData() {
     n.iss = iss.toInt();
 
     QString val = ui->val->text();
+    val = val.toUpper();
     n.val = val.toStdString();
 
     QString oss = ui->oss->text();
@@ -52,4 +54,10 @@ void MainWindow::on_iss_textChanged(const QString &arg1)
 void MainWindow::on_oss_textChanged(const QString &arg1)
 {
     cnv();
+}
+
+void MainWindow::on_copyBtn_clicked()
+{
+    QClipboard* clipboard = QApplication::clipboard();
+    clipboard->setText(ui->output->text());
 }
